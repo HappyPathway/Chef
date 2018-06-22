@@ -1,0 +1,13 @@
+{
+    "name": "simple-app",
+    "description": "This is an simple-app role defined as JSON",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+    },
+    "override_attributes": {
+    },
+    "run_list": [
+        "recipe[simple-app]"
+    ]
+}

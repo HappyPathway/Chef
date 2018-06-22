@@ -8,6 +8,8 @@ execute "apt-get update"
 apt_package "python-pip"
 apt_package "supervisor"
 
+directory "/opt/app"
+
 cookbook_file "/etc/supervisor/conf.d/calculator.conf" do
     source "calculator.conf"
 end
