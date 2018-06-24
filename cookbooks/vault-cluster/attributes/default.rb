@@ -1,0 +1,2 @@
+default[:consul][:download_url] = "https://s3.us-east-2.amazonaws.com/consul-dev-artifacts/consul-connect/1.2.0-beta4/consul_1.2.0-beta4_linux_amd64.zip"
+default[:vault][:download_url] = "https://s3-us-west-2.amazonaws.com/hc-enterprise-binaries/vault/ent/0.10.3/vault-enterprise_0.10.3%2Bent_linux_amd64.zip"
