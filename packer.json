@@ -1,6 +1,6 @@
 {
     "variables": {
-      "source_ami": "",
+      "source_ami": "ami-9f086de0",
       "instance_type": "m4.large",
       "chef_validation_key": "{{env `CHEF_VALIDATION_KEY` }}",
       "chef_client_name": "{{env `CHEF_VALIDATION_CLIENT_NAME` }}",

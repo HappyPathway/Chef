@@ -5,41 +5,41 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 #
 
-
-apt_update "update" do
-    action :update 
+apt_update 'update' do
+  action :update
 end
 
-pkgs = ["curl", "unzip"]
+pkgs = %w(curl unzip)
 pkgs.each do |pkg|
-    apt_package pkg
+  apt_package pkg
 end
 
-remote_file "/tmp/consul.zip" do
-    source node[:consul][:download_url]
+remote_file '/tmp/consul.zip' do
+  source node[:consul][:download_url]
 end
 
-execute "unzip /tmp/consul.zip" do
-    cwd "/usr/local/bin"
+execute 'unzip /tmp/consul.zip' do
+  cwd '/usr/local/bin'
 end
 
-directory "/etc/consul.d" 
+directory '/etc/consul.d'
 
-tools = ["consul"]
+tools = ['consul']
 tools.each do |tool|
-    file "/usr/local/bin/#{tool}" do
-        mode "0755"
-        owner "root"
-    end
+  file "/usr/local/bin/#{tool}" do
+    mode '0755'
+    owner 'root'
+  end
 end
 
-template "/etc/init/consul.conf" do
-    source "consul.conf.erb"
+template '/etc/init/consul.conf' do
+  source 'consul.conf.erb'
 end
 
-directories = ["/etc/consul.d/", "/opt/consul/data"]
+directories = ['/etc/consul.d/', '/opt/consul/data']
 directories.each do |dir|
-    directory dir do
-        owner "root"
-    end
+  directory dir do
+    owner 'root'
+    recursive true
+  end
 end

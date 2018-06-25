@@ -6,16 +6,16 @@
 
 include_recipe 'vault-cluster::default'
 
-remote_file "/tmp/nomad.zip" do
-    source node[:nomad][:download_url]
+remote_file '/tmp/nomad.zip' do
+  source node[:nomad][:download_url]
 end
 
-execute "unzip /tmp/nomad.zip" do
-    cwd "/usr/local/bin"
+execute 'unzip /tmp/nomad.zip' do
+  cwd '/usr/local/bin'
 end
 
-directory "/etc/nomad.d"
+directory '/etc/nomad.d'
 
-cookbook_file "/etc/init/nomad.conf" do
-    source "nomad.conf"
+cookbook_file '/etc/init/nomad.conf' do
+  source 'nomad.conf'
 end
