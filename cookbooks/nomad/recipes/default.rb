@@ -4,7 +4,8 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-include_recipe 'vault-cluster::default'
+include_recipe 'consul::default'
+include_recipe 'vault::default'
 
 remote_file '/tmp/nomad.zip' do
   source node[:nomad][:download_url]

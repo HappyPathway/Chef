@@ -4,6 +4,7 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
+include_recipe 'consul::default'
 apt_update 'update' do
   action :update
 end
