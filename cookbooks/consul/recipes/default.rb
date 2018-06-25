@@ -43,3 +43,20 @@ directories.each do |dir|
     recursive true
   end
 end
+
+
+cookbook_file '/etc/consul.d/consul-default.json' do
+  source 'consul-default.json'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+cookbook_file '/etc/consul.d/consul-connect.json' do
+  source 'consul-connect.json'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
