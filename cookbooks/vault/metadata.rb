@@ -1,4 +1,4 @@
-name 'vault-cluster'
+name 'vault'
 maintainer 'The Authors'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'

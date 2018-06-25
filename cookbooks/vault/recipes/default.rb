@@ -18,21 +18,11 @@ remote_file "/tmp/vault.zip" do
     source node[:vault][:download_url]
 end
 
-remote_file "/tmp/consul.zip" do
-    source node[:consul][:download_url]
-end
-
 execute "unzip /tmp/vault.zip" do
     cwd "/usr/local/bin"
 end
 
-execute "unzip /tmp/consul.zip" do
-    cwd "/usr/local/bin"
-end
-
-directory "/etc/consul.d" 
-
-tools = ["vault", "consul"]
+tools = ["vault"]
 tools.each do |tool|
     file "/usr/local/bin/#{tool}" do
         mode "0755"
@@ -40,13 +30,17 @@ tools.each do |tool|
     end
 end
 
-template "/etc/init/consul.conf" do
-    source "consul.conf.erb"
-end
-
-directories = ["/etc/consul.d/", "/etc/vault.d"]
+directories = ["/etc/vault.d"]
 directories.each do |dir|
     directory dir do
         owner "root"
     end
+end
+
+cookbook_file "/etc/init/vault.conf" do
+    source "vault.conf"
+end
+
+cookbook_file "/etc/vault.d/vault-server.hcl" do
+    source "vault-server.hcl"
 end
