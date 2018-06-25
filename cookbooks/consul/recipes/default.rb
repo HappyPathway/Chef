@@ -44,7 +44,6 @@ directories.each do |dir|
   end
 end
 
-
 cookbook_file '/etc/consul.d/consul-default.json' do
   source 'consul-default.json'
   owner 'root'
