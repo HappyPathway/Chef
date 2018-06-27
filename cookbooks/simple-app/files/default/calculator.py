@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
+import sys
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,6 +14,15 @@ class Multiply(Resource):
 
     def post(self, operand1, operand2):
         return {'product': int(operand1*operand2)}
+
+class Divide(Resource):
+
+    def post(self, operand1, operand2):
+        try:
+            return {'quotient': int(operand1/operand2)}
+        except ZeroDivisionError:
+            return {'quotien': sys.maxint }
+
 
 api.add_resource(Add, '/add/<int:operand1>/<int:operand2>')
 api.add_resource(Multiply, '/multi/<int:operand1>/<int:operand2>')
