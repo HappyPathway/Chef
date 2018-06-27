@@ -5,6 +5,7 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 execute 'apt-get update'
+apt_package 'python-dev'
 apt_package 'python-pip'
 apt_package 'supervisor'
 
