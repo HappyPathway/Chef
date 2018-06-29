@@ -50,7 +50,8 @@
         "service_version": "{{user `service_version`}}",
         "ubuntu_name": "{{user `ubuntu_name`}}",
         "ubuntu_version": "{{user `ubuntu_version`}}",
-        "owner": "{{user `owner`}}"
+        "owner": "{{user `owner`}}",
+        "install_type": "{{user `install_type`}}"
       }
     }
   ],
