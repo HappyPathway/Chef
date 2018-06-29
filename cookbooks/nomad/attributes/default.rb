@@ -1,1 +1,3 @@
-default[:nomad][:oss][:download_url] = 'https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64.zip'
+default[:nomad][:version] = '0.8.4'
+default[:nomad][:install_type] = 'oss'
+default[:nomad][:oss][:download_url] = "https://releases.hashicorp.com/nomad/#{node[:nomad][:version]}/nomad_#{node[:nomad][:version]}_linux_amd64.zip"

@@ -10,7 +10,10 @@
     "service_version": "",
     "region": "us-east-1",
     "ami_name": "",
-    "owner": "{{env `USER`}}"
+    "owner": "{{env `USER`}}",
+    "install_type": "oss",
+    "ubuntu_name": "trusty",
+    "ubuntu_version": "14.04"
   },
   "builders": [
     {
@@ -21,12 +24,12 @@
       "force_deregister": true,
       "force_delete_snapshot": true,
       "ssh_username": "ubuntu",
-      "ami_name": "{{user `ami_name`}}",
+      "ami_name": "{{user `ami_name`}}-{{user `ubuntu_version_name`}}-{{user `ubuntu_version`}}",
       "ami_groups": "all",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "ubuntu/images/*ubuntu-trusty-14.04-amd64-server-*",
+          "name": "ubuntu/images/*ubuntu-{{user `ubuntu_name`}}-{{user `ubuntu_version`}}-amd64-server-*",
           "root-device-type": "ebs"
         },
         "owners": [
@@ -42,6 +45,8 @@
       "tags": {
         "service_name": "{{ user `service_name`}}",
         "service_version": "{{user `service_version`}}",
+        "ubuntu_name": "{{user `ubuntu_name`}}",
+        "ubuntu_version": "{{user `ubuntu_version`}}",
         "owner": "{{user `owner`}}"
       }
     }
@@ -71,13 +76,16 @@
         "encrypted_data_bag_secret_path": "/tmp/packer-chef-client/encrypted_data_bag_secret",
         "region": "{{ user `region`  }}",
         "vault": {
-          "install_type": "{{user `install_type`}}"
+          "install_type": "{{user `install_type`}}",
+          "version": "{{user `service_version`}}"
         },
         "consul": {
-          "install_type": "{{user `install_type`}}"
+          "install_type": "{{user `install_type`}}",
+          "version": "{{user `service_version`}}"
         },
         "nomad": {
-          "install_type": "oss"
+          "install_type": "oss",
+          "version": "{{user `service_version`}}"
         }
       }
     }
