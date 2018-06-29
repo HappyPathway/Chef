@@ -14,8 +14,9 @@ pkgs.each do |pkg|
   apt_package pkg
 end
 
+install_type = node[:consul][:install_type]
 remote_file '/tmp/consul.zip' do
-  source node[:consul][:download_url]
+  source node[:consul][install_type][:download_url]
 end
 
 execute 'unzip /tmp/consul.zip' do

@@ -5,6 +5,7 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 include_recipe 'consul::default'
+
 apt_update 'update' do
   action :update
 end
@@ -14,8 +15,9 @@ pkgs.each do |pkg|
   apt_package pkg
 end
 
+install_type = node[:vault][:install_type]
 remote_file '/tmp/vault.zip' do
-  source node[:vault][:download_url]
+  source node[:vault][install_type][:download_url]
 end
 
 execute 'unzip /tmp/vault.zip' do
