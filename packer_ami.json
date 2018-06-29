@@ -9,7 +9,7 @@
     "service_name": "",
     "service_version": "",
     "region": "us-east-1",
-    "ami_prefix": "{{env `USER`}}-",
+    "ami_name": "",
     "owner": "{{env `USER`}}"
   },
   "builders": [
@@ -21,7 +21,7 @@
       "force_deregister": true,
       "force_delete_snapshot": true,
       "ssh_username": "ubuntu",
-      "ami_name": "{{user `ami_prefix`}}{{ user `service_name`}}-{{ user `service_version`}}",
+      "ami_name": "{{user `ami_name`}}",
       "ami_groups": "all",
       "source_ami_filter": {
         "filters": {
@@ -69,7 +69,16 @@
       "validation_client_name": "{{user `chef_client_name` }}",
       "json": {
         "encrypted_data_bag_secret_path": "/tmp/packer-chef-client/encrypted_data_bag_secret",
-        "region": "{{ user `region`  }}"
+        "region": "{{ user `region`  }}",
+        "vault": {
+          "install_type": "{{user `install_type`}}"
+        },
+        "consul": {
+          "install_type": "{{user `install_type`}}"
+        },
+        "nomad": {
+          "install_type": "oss"
+        }
       }
     }
   ]
