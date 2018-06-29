@@ -13,7 +13,10 @@
     "owner": "{{env `USER`}}",
     "install_type": "oss",
     "ubuntu_name": "trusty",
-    "ubuntu_version": "14.04"
+    "ubuntu_version": "14.04",
+    "nomad_version": "0.8.4",
+    "consul_version": "1.2.0",
+    "vault_version": "0.10.3"
   },
   "builders": [
     {
@@ -24,7 +27,7 @@
       "force_deregister": true,
       "force_delete_snapshot": true,
       "ssh_username": "ubuntu",
-      "ami_name": "{{user `ami_name`}}-{{user `ubuntu_version_name`}}-{{user `ubuntu_version`}}",
+      "ami_name": "{{user `ami_name`}}-{{user `ubuntu_name`}}-{{user `ubuntu_version`}}",
       "ami_groups": "all",
       "source_ami_filter": {
         "filters": {
@@ -77,15 +80,15 @@
         "region": "{{ user `region`  }}",
         "vault": {
           "install_type": "{{user `install_type`}}",
-          "version": "{{user `service_version`}}"
+          "version": "{{user `vault_version`}}"
         },
         "consul": {
           "install_type": "{{user `install_type`}}",
-          "version": "{{user `service_version`}}"
+          "version": "{{user `consul_version`}}"
         },
         "nomad": {
           "install_type": "oss",
-          "version": "{{user `service_version`}}"
+          "version": "{{user `nomad_version`}}"
         }
       }
     }
