@@ -1,0 +1,4 @@
+source 'https://supermarket.chef.io'
+cookbook 'sc-mongodb', '~> 1.0.1'
+
+cookbook 'tar', '~> 2.2.0'

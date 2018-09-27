@@ -25,5 +25,5 @@ end
 
 execute 'pip install -r /tmp/requirements.txt'
 service 'supervisor' do
-  action :enable
+  action :disable
 end
