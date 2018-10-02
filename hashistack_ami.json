@@ -22,7 +22,15 @@
     {
       "type": "amazon-ebs",
       "region": "{{ user `region`}}",
-      "source_ami": "{{user `source_ami`}}",
+      "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+            "root-device-type": "ebs"
+          },
+          "owners": ["099720109477"],
+          "most_recent": true
+      },
       "instance_type": "{{user `instance_type`}}",
       "force_deregister": true,
       "force_delete_snapshot": true,

@@ -1,0 +1,22 @@
+{
+    "name": "mongodb",
+    "description": "Very Basic MongoDB Role. Does not follow best practices as username and password are hard-coded",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+        "mongodb": {
+            "config": {
+                "auth": true
+            },
+            "admin": {
+                "password": ".K+U*@``9B4jcH9V"
+            }
+        }
+    },
+    "override_attributes": {
+    },
+    "run_list": [
+        "recipe[sc-mongodb]",
+        "recipe[sc-mongodb::user_management]"
+    ]
+}

@@ -1,0 +1,1 @@
+{"virtualbox":{"/root/.ssh/":{"owner":"root","mount_options":["dmode=700,fmode=600","uid=0","gid=1000"],"guestpath":"/root/.ssh","hostpath":"/Users/davearnold/.ssh","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/davearnold/git/chef","disabled":false,"__vagrantfile":true}}}
